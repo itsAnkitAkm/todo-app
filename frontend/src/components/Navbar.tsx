@@ -3,7 +3,7 @@ import CreateActivity from "./addTask";
 import { TActivity } from "../types/activity";
 import instance from "../utils/axios";
 import { useNavigate } from "react-router-dom";
-import { BsPerson } from 'react-icons/bs'; // Import user icon from react-icons
+import { BsPerson } from "react-icons/bs"; // Import user icon from react-icons
 
 const Navbar = ({
   setActivities,
@@ -19,6 +19,14 @@ const Navbar = ({
     navigate("login");
   };
 
+  const handleAuthButton = () => {
+    if (user) {
+      logout(); // Log out if user is logged in
+    } else {
+      navigate("login"); // Redirect to login if not logged in
+    }
+  };
+
   return (
     <nav className="bg-blue-500 text-white shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -31,10 +39,10 @@ const Navbar = ({
           </div>
           <div className="ml-4">
             <button
-              onClick={logout}
+              onClick={handleAuthButton}
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors duration-300 ease-in-out"
             >
-              Logout
+              {user ? "Logout" : "Login"}
             </button>
           </div>
         </div>

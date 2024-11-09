@@ -1,7 +1,8 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { Signup, Login, ProtectedRoute, Home } from "./pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Signup, Login, Home } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AuthRoute from "./pages/authRoute";
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <Home />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         ></Route>
       </Routes>

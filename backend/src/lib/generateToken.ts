@@ -8,6 +8,7 @@ export const sendApiResponse = (user: TUser, statusCode: number, res: Response) 
     const token = user.createJWT();
     const options = {
         httpOnly: process.env.NODE_ENV === 'production',
+        sameSite: 'none' as const,
         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     };
 
